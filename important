@@ -1,0 +1,8 @@
+judul = pusat surat DINAS PERHUBUNGAN KABUPATEN PEMALANG
+
+reqs:
+menyimpan file pdf surat
+catatan disposisi
+search and filter by date
+surat masuk -> nomor -> disposisi kepala -> sekre menerima disposisi -> disposisi turun bidang -> surat arsip
+surat keluar -> nomor -> ttd kepala -> sekre terima surat keluar ttd -> dikirimkan -> arsip

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      rel="icon"
+      href="https://itec.sch.id/wp-content/uploads/2018/05/itec-pav.png"
+    />
+
+    <title>Login form</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link
+      href="https://getbootstrap.com/docs/4.0/examples/floating-labels/floating-labels.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <section class="login-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 login-sec">
+            <h2 class="text-center">Login</h2>
+            <form class="form-signin" action="" method="post">
+              {% csrf_token %} {% for field in form %}
+              <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="text-uppercase"
+                  >{{ field.label }}</label
+                >
+                <input
+                  type="{{ field.field.widget.input_type }}"
+                  id="{{ field.id_for_label }}"
+                  class="form-control"
+                  name="{{ field.html_name }}"
+                  required="required"
+                />
+              </div>
+              <p>{{ field.errors }}</p>
+              {% endfor %}
+
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" />
+                  <small>Remember Me</small>
+                </label>
+                <button type="submit" class="btn btn-login float-right">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-8 banner-sec">
+            <img
+              class="d-block img-fluid"
+              src="https://th.bing.com/th/id/R.059529db5e62de1fb5db2006e58f89e6?rik=avURFTrtopBz9Q&riu=http%3a%2f%2f3.bp.blogspot.com%2f-7kt8uCzyA68%2fTtTPYOI0AHI%2fAAAAAAAAACA%2fHcOXUSInKFQ%2fw1200-h630-p-k-no-nu%2fPEMALANG11.jpg&ehk=bfJx3ZA6VRxYilx%2fpiEVV5PaLM05wxWqt9%2feet7JiZc%3d&risl=&pid=ImgRaw&r=0"
+              alt="Pemalang"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

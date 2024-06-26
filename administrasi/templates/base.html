@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" href="https://itec.sch.id/wp-content/uploads/2018/05/itec-pav.png" />
+  <title>Aplikasi administrasi surat menyurat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    body {
+      display: flex;
+    }
+
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      background-color: #343a40;
+      padding: 15px;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #fff;
+      z-index: 99;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    .sidebar h3 {
+      color: #fff;
+    }
+
+    .sidebar .nav-link {
+      color: #adb5bd;
+    }
+
+    .sidebar .nav-link.active {
+      color: #fff;
+      background-color: #495057;
+    }
+
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+      width: 100%;
+      transition: margin-left 0.3s ease;
+    }
+
+
+    .footer {
+      clear: both;
+      position: relative;
+      height: 40px;
+      margin-top: 100px;
+    }
+
+    table {
+      font-size: 14px;
+    }
+
+    .logout-button {
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        margin-left: 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .sidebar.collapsed {
+        transform: translateX(0);
+      }
+
+      .content.collapsed {
+        margin-left: 250px;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .burger-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: #343a40;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn d-md-none" id="closeSidebar">&times;</button>
+    <div>
+      <h3>Aplikasi <br />Arsip Surat</h3>
+      <br />
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link {% if request.path == '/home/' %}active{% endif %}">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'surat:surat_masuk_list' %}"
+            class="nav-link {% if request.path == '/surat/suratmasuk/' %}active{% endif %}">Surat Masuk</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'surat:surat_keluar_list' %}"
+            class="nav-link {% if request.path == '/surat/suratkeluar/' %}active{% endif %}">Surat Keluar</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'surat:arsip_surat_masuk_list' %}"
+            class="nav-link {% if request.path == '/surat/arsipsuratmasuk/' %}active{% endif %}">Arsip Surat Masuk</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'surat:arsip_surat_keluar_list' %}"
+            class="nav-link {% if request.path == '/surat/arsipsuratkeluar/' %}active{% endif %}">Arsip Surat Keluar</a>
+        </li>
+      </ul>
+    </div>
+    <form id="logout-form" action="{% url 'logout' %}" method="post" class="mt-4 logout-button">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger btn-block">
+        Logout
+      </button>
+    </form>
+  </div>
+  <button class="burger-btn d-md-none" id="sidebarBurgerToggle">
+    &#9776;
+  </button>
+  <div class="content" id="content">
+    <div class="container shadow p-3 mb-5 bg-white rounded">
+      {% block content %} {% endblock content %}
+    </div>
+    <div class="footer">
+      <p class="mt-5 mb-3 text-muted text-center">
+        <a href="#" class="text-secondary">Pemalang</a>
+        &copy; 2024
+      </p>
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#sidebarBurgerToggle").click(function () {
+        $("#sidebar").toggleClass("collapsed");
+        $("#content").toggleClass("collapsed");
+      });
+      $("#sidebarNewToggle").click(function () {
+        $("#sidebar").toggleClass("collapsed");
+        $("#content").toggleClass("collapsed");
+      });
+      $("#closeSidebar").click(function () {
+        $("#sidebar").addClass("collapsed");
+        $("#content").addClass("collapsed");
+      });
+    });
+  </script>
+</body>
+
+</html>

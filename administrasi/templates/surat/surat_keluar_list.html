@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block content %}
+<h4>
+  <small class="text-muted">List surat keluar</small>
+  <small class="text-muted" style="float: right">
+    <a href="{% url 'surat:surat_keluar_form' %}" class="btn btn-outline-primary">Tambah data</a>
+  </small>
+</h4>
+<br />
+<form method="GET" action="{% url 'surat:surat_keluar_list' %}" class="form-inline mb-3">
+  <input type="text" name="q" class="form-control mr-sm-2" placeholder="Cari..." value="{{ request.GET.q }}">
+
+  <label for="start_date" class="mr-sm-2">Mulai dari:</label>
+  <input type="date" name="start_date" id="start_date" class="form-control mr-sm-2"
+    value="{{ request.GET.start_date }}">
+
+  <label for="end_date" class="mr-sm-2">Sampai:</label>
+  <input type="date" name="end_date" id="end_date" class="form-control mr-sm-2" value="{{ request.GET.end_date }}">
+
+  <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+</form>
+<br />
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Nomor</th>
+        <th scope="col">Tanggal surat</th>
+        <th scope="col">Perihal</th>
+        <th scope="col">Pengirim/Jasa</th>
+        <th scope="col">Deksripsi</th>
+        <th scope="col">Status</th>
+        <th scope="col">Tanggal Keluar</th>
+        <th scope="col">Pembaruan</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for dt in data %}
+    <tbody>
+      <tr>
+        <td scope="col">{{ forloop.counter }}</td>
+        <td scope="row">{{ dt.nomor }}</td>
+        <td>{{dt.tgl_surat}}</td>
+        <td>{{dt.perihal}}</td>
+        <td>{{dt.pengirim}}</td>
+        <td>{{dt.deskripsi}}</td>
+        <td>{{dt.status}}</td>
+        <td>{{dt.tgl_keluar}}</td>
+        <td>{{dt.updated}}</td>
+        <td>
+          {% if dt.file_path %}
+          <a href="http://127.0.0.1:8000/media/{{ dt.file_path }}" target="_blank">Lihat File</a><br /><br />
+          {% endif %}
+          <a href="{% url 'surat:surat_keluar_edit' dt.id %}">Edit</a> |
+          <a onclick="return confirm('Delete data?')" href="{% url 'surat:surat_keluar_delete' dt.id %}">Hapus</a>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}
