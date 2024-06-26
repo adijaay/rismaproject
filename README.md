@@ -1,11 +1,5 @@
-# Administrasi
-Project ini adalah contoh aplikasi administrasi surat menyurat dengan menggunakan python 3, django versi 2, bootstrap 4, dan jquery UI serta django view function base. Semoga ada yang mengembangkan menjadi lebih sempurna, baik dari user interface serta algoritma dan alur best practice dari django itu sendiri.
-
-## Berikut ini cara instalasi
-*ini ada video cara instalasi untuk windows https://www.youtube.com/watch?v=rELC-g6Yca0*
-
-1. Clone dari repo **git clone https://github.com/h4rm41n/django-example-project**
-2. Masuk ke project **cd django-example-project**
+1. Clone dari repo **git clone https://github.com/adijaay/rismaproject.git**
+2. Masuk ke project **cd rismaproject**
 3. Membuat dan mengaktifkan environment
     * __**pip install virtualenv**__ (*bagi yang belum install virtualenv*)
     * **virtualenv env** jika terdapat dua versi python yakni python2 dan python3 bisa lebih spesifik ke versi python yang kita inginkan dengan menggunakan command **virtualenv -p python3 env**
