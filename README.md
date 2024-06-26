@@ -12,4 +12,3 @@
    - Jalankan perintah inisialisasi database dengan command **python manage.py migrate**
 7. Buat user baru **python manage.py createsuperuser**
 8. Jalankan server/program **python manage.py runserver**
-9. Terimakasih
