@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'administrasi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_surat_menyurat',
+        'NAME': 'db_surat_pemalang',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '',

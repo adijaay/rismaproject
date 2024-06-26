@@ -53,8 +53,7 @@
           {% if dt.file_path %}
           <a href="http://127.0.0.1:8000/media/{{ dt.file_path }}" target="_blank">Lihat File</a><br /><br />
           {% endif %}
-          <!-- <a href="{% url 'surat:surat_masuk_edit' dt.id %}">Edit</a> | -->
-          <a onclick="return confirm('Delete data?')" href="{% url 'surat:arsip_surat_masuk_delete' dt.id %}">Hapus</a>
+          <a onclick="return confirm('Delete data?')" href="">Hapus</a>
         </td>
       </tr>
     </tbody>

@@ -6,7 +6,7 @@
   </small>
 </h4>
 <br />
-<form method="GET" action="{% url 'surat:surat_masuk_list' %}" class="form-inline mb-3">
+<form method="GET" class="form-inline mb-3">
   <input type="text" name="q" class="form-control mr-sm-2" placeholder="Cari..." value="{{ request.GET.q }}">
 
   <label for="start_date" class="mr-sm-2">Mulai dari:</label>
@@ -53,8 +53,8 @@
           {% if dt.file_path %}
           <a href="http://127.0.0.1:8000/media/{{ dt.file_path }}" target="_blank">Lihat File</a><br /><br />
           {% endif %}
-          <a href="{% url 'surat:surat_masuk_edit' dt.id %}">Edit</a> |
-          <a onclick="return confirm('Delete data?')" href="{% url 'surat:surat_masuk_delete' dt.id %}">Hapus</a>
+          <a href="">Edit</a> |
+          <a onclick="return confirm('Delete data?')" href="">Hapus</a>
         </td>
       </tr>
     </tbody>
